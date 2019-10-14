@@ -28,7 +28,7 @@
         <el-input v-model="input" placeholder="请输入内容" size="mini"></el-input>
       </el-col>
       <el-col :span="1" class="grid">
-        <el-button type="success" icon="el-icon-search" size="mini">搜索</el-button>
+        <el-button type="success" icon="el-icon-search" size="mini" @click="serach">搜索</el-button>
       </el-col>
     </el-row>
     <br />
@@ -49,12 +49,12 @@
       <el-table-column prop="name" label="姓名" width="180"></el-table-column>
       <el-table-column prop="address" label="地址"></el-table-column>
       <el-table-column label="编辑" width="100">
-        <template slot-scope="scope">
+        <template>
           <el-button type="primary" icon="el-icon-edit" size="mini">编辑</el-button>
         </template>
       </el-table-column>
       <el-table-column label="删除" width="100">
-        <template slot-scope="scope">
+        <template>
           <el-button type="danger" icon="el-icon-delete" size="mini">删除</el-button>
         </template>
       </el-table-column>
@@ -108,6 +108,18 @@ export default {
     },
     indexMethod (index) {
       return index
+    },
+    serach () {
+      this.$http.get('http://127.0.0.1/jc/etl?act=getBJ', {
+        params: {
+          etlToken: encodeURI('=YjN2IWNyQmM5YzNyYTZiF2YkN2YhRmYlVjM0UzMxMjZ'),
+          page: '1',
+          rows: '10'
+        }
+      }).then(request => {
+        var Data = request.data
+        console.log(Data)
+      })
     }
   }
 }
