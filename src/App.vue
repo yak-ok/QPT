@@ -110,7 +110,7 @@ export default {
       return index
     },
     serach () {
-      this.$http.get('http://127.0.0.1/jc/etl?act=getBJ', {
+      this.$http.get('/api/index', {
         params: {
           etlToken: encodeURI('=YjN2IWNyQmM5YzNyYTZiF2YkN2YhRmYlVjM0UzMxMjZ'),
           page: '1',
